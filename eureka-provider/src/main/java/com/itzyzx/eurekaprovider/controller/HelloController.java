@@ -49,4 +49,8 @@ public class HelloController {
 //	public SecurityProperties.User hello(@RequestHeader String name, @RequestHeader Integer age){
 //		return new SecurityProperties.User(name,age);
 //	}
+	@RequestMapping("/good")
+	public String good(){
+		return "good";
+	}
 }
