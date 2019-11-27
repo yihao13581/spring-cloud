@@ -1,5 +1,6 @@
 package com.itzyzx.eurekaprovider.controller;
 
+import com.itzyzx.eurekaprovider.bean.User;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -45,12 +46,16 @@ public class HelloController {
 	public String hello(@RequestParam String name){
 		return "hello"+name;
 	}
-//	@RequestMapping(value="/hello2",method=RequestMethod.GET)
-//	public SecurityProperties.User hello(@RequestHeader String name, @RequestHeader Integer age){
-//		return new SecurityProperties.User(name,age);
-//	}
-	@RequestMapping("/good")
-	public String good(){
-		return "good";
-	}
+
+	@RequestMapping(value="/hello2",method=RequestMethod.GET)
+	public User hello(@RequestHeader String name,@RequestHeader Integer age){
+		return new User(name,age);}
+
+		@RequestMapping(value="/hello3",method=RequestMethod.POST)
+	public String hello(@RequestBody User user)
+		{
+			return "hello"+user.getName()+","+user.getAge();
+		}
+
+
 }
